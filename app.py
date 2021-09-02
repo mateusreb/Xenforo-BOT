@@ -4,12 +4,14 @@ import csv
 from bs4 import BeautifulSoup
 
 url         = "https://xenforourl.com/index.php" #Url do forum.
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0"
+
 user        = "" #Nome de usuário para login.
 password    = "" #Senha para login.
 
-def SendMessageTest(session, token):
+def SendMessage(session, token):
     header = {
-        "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0",
+        "User-Agent" : user_agent,
         "Content-type": "application/x-www-form-urlencoded",
         "Accept" : "text/plain"            
     }    
@@ -35,7 +37,7 @@ def SendMessageTest(session, token):
 
 def GetXfSession():
     header = {
-        "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0",
+        "User-Agent" : user_agent,
         "Content-type": "application/x-www-form-urlencoded",
         "Accept" : "text/plain"
     }
@@ -43,7 +45,7 @@ def GetXfSession():
 
 def GetXfToken(session):
     header = {
-        "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0",
+        "User-Agent" : user_agent,
         "Content-type": "application/x-www-form-urlencoded",
         "Accept" : "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",  
         "Accept-Encoding": "identity, deflate, compress, gzip",
@@ -58,7 +60,7 @@ def GetXfToken(session):
 
 def AuthUser(user, password):
     header = {
-        "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0",
+        "User-Agent" : user_agent,
         "Content-type": "application/x-www-form-urlencoded",
         "Accept" : "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",  
         "Accept-Encoding": "gzip, deflate, br",
@@ -80,4 +82,4 @@ def AuthUser(user, password):
 
 session = AuthUser(user, password)
 token = GetXfToken(session)
-SendMessageTest(session, token)
+SendMessage(session, token)
